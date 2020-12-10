@@ -37,7 +37,7 @@ const secondsToHours = seconds => seconds / 3600.0;
 
   for (let response; startAt < total; startAt += maxResults) {
     response = await jira.search.search({
-      jql: `project = ${project} AND Sprint = ${sprint}`,
+      jql: `project = ${project} AND Sprint in (${sprint})`,
       fields: ['id', 'key', 'issuetype', 'parent', 'worklog'],
       maxResults,
       startAt,
